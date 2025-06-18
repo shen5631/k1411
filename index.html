@@ -7,7 +7,7 @@
   Note: This infographic is a single-file HTML document with all CSS and JavaScript embedded.
         It visualizes the key findings of the student report on generative AI usage.
 -->
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,287 +19,320 @@
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
             background-color: #FFF1F2; /* Pink-50 as a very light pink background */
-            color: #4A5568; /* Gray-700 for better contrast on pinkish background */
-            line-height: 1.6;
+            color: #4A5568; /* Gray-700 */
+            line-height: 1.7; /* Increased line-height for better readability */
+        }
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(255, 241, 242, 0.8), rgba(253, 242, 248, 0.8)), url('src/image_b98723.png');
+            background-size: cover;
+            background-position: center;
         }
         .card {
-            background-color: #FFFFFF; /* 카드 배경 */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-lg */
-            padding: 1.5rem; /* p-6 */
-            margin-bottom: 1.5rem; /* mb-6 */
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
         .chart-container {
-            position: relative; /* For Chart.js responsiveness */
-            height: 300px; /* Default height */
+            position: relative;
+            height: 320px;
             width: 100%;
         }
         h1, h2, h3, h4, h5, h6 {
-            color: #DB2777; /* Fuchsia-600 for headers */
-            font-weight: 600; /* semibold */
+            color: #DB2777; /* Fuchsia-600 */
+            font-weight: 700; /* bold */
         }
         .accent-text {
             color: #9333EA; /* Purple-600 */
         }
         .section-icon {
-            font-size: 2.5rem; /* text-4xl */
-            color: #DB2777; /* Fuchsia-600 */
-            margin-bottom: 0.5rem; /* mb-2 */
+            color: #DB2777;
         }
         .custom-gradient-text {
-            background-image: linear-gradient(to right, #DB2777, #9333EA); /* Fuchsia to Purple Gradient */
+            background-image: linear-gradient(to right, #DB2777, #9333EA);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .highlight-box {
             border-left: 4px solid #F472B6; /* Pink-400 */
-            padding: 1rem; /* p-4 */
+            padding: 1rem;
             background-color: #FDF2F8; /* Pink-50 */
-            margin-top: 1rem; /* mt-4 */
-            margin-bottom: 1rem; /* mb-4 */
-            border-radius: 0.25rem; /* rounded-sm */
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
         }
         .highlight-box strong {
-            color: #DB2777; /* Fuchsia-600 for emphasized text */
+            color: #DB2777;
         }
-        .report-title-text {
-            font-size: 2rem; /* text-3xl or 4xl */
-            font-weight: 700; /* bold */
-            text-align: center;
-            margin-bottom: 0.5rem; /* mb-2 */
-            line-height: 1.2;
+        /* Font size adjustments */
+        body { font-size: 1.1rem; }
+        h1 { font-size: 2.75rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+        p, li { font-size: 1rem; }
+        .text-sm { font-size: 0.9rem; }
+        .text-xs { font-size: 0.8rem; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 3.5rem; }
         }
-        @media (min-width: 768px) { /* md breakpoint */
-            .report-title-text {
-                font-size: 2.5rem; /* text-4xl */
-            }
-        }
-        .report-subtitle-text {
-            font-size: 1.125rem; /* text-lg */
-            text-align: center;
-            color: #4A5568; /* Gray-700 */
-            margin-bottom: 2rem; /* mb-8 */
-        }
-        .list-disc {
-            padding-left: 1.5em;
-        }
-        .list-disc li {
-            margin-bottom: 0.5em;
-        }
+
         /* Scroll Animation */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
             will-change: opacity, transform;
         }
         .scroll-reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Table of Contents */
+        .toc {
+            position: sticky;
+            top: 2rem;
+            align-self: start;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        .toc li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            color: #6B7280; /* Gray-500 */
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
+        }
+        .toc li a:hover {
+            background-color: #FCE7F3; /* Pink-100 */
+            color: #BE185D; /* Pink-700 */
+        }
+        .toc li a.active {
+            color: #DB2777; /* Fuchsia-600 */
+            background-color: #FDF2F8; /* Pink-50 */
+            border-left-color: #DB2777;
+        }
+
+        /* Scroll Down Arrow */
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
-    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div>
+            <h1 class="font-bold custom-gradient-text px-4">생성형 AI, 우리는 어떻게 활용해야 할까?</h1>
+            <p class="mt-4 text-xl md:text-2xl text-gray-700">미림마이스터고등학교 1학년 4반 1조 공동 연구 보고서</p>
+        </div>
+        <a href="#main-content" class="scroll-down text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </a>
+    </header>
 
-        <!-- 0. 제목 및 개요 섹션 -->
-        <header class="text-center mb-10 md:mb-16 scroll-reveal">
-            <h1 class="report-title-text custom-gradient-text">생성형 AI, 우리는 어떻게 활용해야 할까?</h1>
-            <p class="report-subtitle-text">미림마이스터고등학교 1학년 4반 1조 공동 연구 보고서 핵심 요약</p>
-            <div class="text-sm text-gray-700">
-                <p><strong>조사팀:</strong> 김희성, 김연서, 신홍명, 조정모 (1학년 4반 1조)</p>
-                <p><strong>보고서 작성일:</strong> 2025년 5월 29일</p>
-            </div>
-        </header>
-
-        <main>
-            <!-- 1. 조사 동기와 목적 -->
-            <section id="motivation-purpose" class="card scroll-reveal">
-                <div class="flex items-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-10 h-10 mr-3">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L1.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.25 12L15.404 12l.813 2.846a4.5 4.5 0 01-3.09 3.09L12 18.75l-2.846.813a4.5 4.5 0 01-3.09-3.09L5.25 12l2.846-.813a4.5 4.5 0 013.09-3.09L12 5.25l2.846.813a4.5 4.5 0 013.09 3.09L18.75 12z" />
-                    </svg>
-                    <h2 class="text-2xl font-bold">1. 조사 동기와 목적</h2>
-                </div>
-                <div class="space-y-3 text-gray-700">
-                    <p><strong>조사 동기:</strong> 1학년 4반 친구들이 생성형 AI를 사용함으로써 나타나는 영향과 장점 및 단점, 그리고 그로 인해 나타나는 이익과 손해를 알아보기 위함이다.</p>
-                    <p><strong>조사 목적:</strong> 1학년 4반 학생들이 생성형 AI를 올바르게, 어떤 상황에 사용하고 있는지 알기 위함이다.</p>
-                    <p><strong>최종 목표:</strong> 생성형 AI에 대한 문제점과 알아야 할 점을 깨닫게 하고, AI를 유용하게 사용하는 방법을 알려주는 것이다.</p>
-                </div>
-            </section>
-
-            <!-- 2. 조사 계획 -->
-            <section id="research-plan" class="card scroll-reveal">
-                <div class="flex items-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-10 h-10 mr-3">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                    </svg>
-                    <h2 class="text-2xl font-bold">2. 조사 계획</h2>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="font-semibold text-lg text-gray-800">조사 기간</h4>
-                        <p class="text-gray-700">2025년 5월 15일 ~ 2025년 5월 20일</p>
+    <div id="main-content" class="container mx-auto p-4 md:p-8 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-8">
+            <!-- Main Content Area -->
+            <main class="lg:col-span-3">
+                <section id="intro" class="card scroll-reveal">
+                    <h2 class="text-3xl font-bold mb-2">보고서 개요</h2>
+                     <div class="text-base text-gray-700 mt-4">
+                        <p><strong>조사팀:</strong> 김희성, 김연서, 신홍명, 조정모 (1학년 4반 1조)</p>
+                        <p><strong>보고서 작성일:</strong> 2025년 5월 29일</p>
                     </div>
-                    <div>
-                        <h4 class="font-semibold text-lg text-gray-800">조사 방법 및 대상</h4>
-                        <ul class="list-disc text-gray-700 ml-5 mt-2">
-                            <li><strong>설문 조사:</strong> 구글 폼을 이용하여 1학년 4반 학생들에게 AI의 장단점, 필요성, 사용 느낌에 대해 오지선다형 질문으로 조사했다.</li>
-                            <li><strong>인터뷰:</strong> 네이버 클로바 노트를 이용하여 1학년 4반 학생들의 AI 사용 느낌, 장단점, AI의 모순된 답변 경험에 대해 인터뷰했다.</li>
-                            <li><strong>조사 대상:</strong> 미림마이스터고등학교 뉴미디어소프트웨어학과 1학년 4반 학생들이다.</li>
-                        </ul>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-200">
-                        <h4 class="font-semibold text-lg text-gray-800 mb-3">조사 과정</h4>
-                        <div class="flex flex-col md:flex-row justify-around items-stretch space-y-4 md:space-y-0 md:space-x-4">
-                            <div class="flex-1 text-center p-4 border border-pink-200 rounded-lg shadow-sm bg-pink-50">
-                                <div class="text-3xl mb-2">📅</div>
-                                <h5 class="font-semibold text-gray-700">기간 설정</h5>
-                                <p class="text-sm text-gray-600">5월 15일 ~ 5월 20일</p>
-                            </div>
-                            <div class="self-center text-2xl text-gray-400 hidden md:block transform rotate-90 md:rotate-0">&rarr;</div>
-                            <div class="flex-1 text-center p-4 border border-pink-200 rounded-lg shadow-sm bg-pink-50">
-                                <div class="text-3xl mb-2">📝</div>
-                                <h5 class="font-semibold text-gray-700">방법 선택</h5>
-                                <p class="text-sm text-gray-600">설문조사 & 인터뷰</p>
-                            </div>
-                            <div class="self-center text-2xl text-gray-400 hidden md:block transform rotate-90 md:rotate-0">&rarr;</div>
-                            <div class="flex-1 text-center p-4 border border-pink-200 rounded-lg shadow-sm bg-pink-50">
-                                <div class="text-3xl mb-2">👥</div>
-                                <h5 class="font-semibold text-gray-700">대상 선정</h5>
-                                <p class="text-sm text-gray-600">1학년 4반 학생</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3. 조사 결과 -->
-            <section id="research-results" class="card scroll-reveal">
-                <div class="flex items-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-10 h-10 mr-3">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                    </svg>
-                    <h2 class="text-2xl font-bold">3. 조사 결과</h2>
-                </div>
+                </section>
                 
-                <div id="survey-analysis">
-                    <h3 class="text-xl font-semibold mt-6 mb-1 text-gray-800">가. 설문조사 분석</h3>
-                    <p class="text-sm text-gray-600 mb-6">총 19명의 학생이 설문조사에 참여했다.</p>
-
-                    <div class="mb-10">
-                        <h4 class="font-semibold text-center mb-1">Q1. 문제 해결 시 AI를 무조건 사용하는가?</h4>
-                        <div class="chart-container w-full max-w-sm mx-auto h-72 md:h-80">
-                            <canvas id="q1Chart"></canvas>
-                        </div>
-                        <p class="text-sm text-gray-600 mt-2 px-4 text-center">해석: 학생들은 AI를 무조건 사용하기보다는 상황에 따라 사용하는 경향을 보였다. '보통이다'는 응답이 6명(31.6%)으로 가장 많았다.</p>
+                <section id="motivation" class="card scroll-reveal">
+                    <div class="flex items-center mb-4">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-12 h-12 mr-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L1.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.25 12L15.404 12l.813 2.846a4.5 4.5 0 01-3.09 3.09L12 18.75l-2.846.813a4.5 4.5 0 01-3.09-3.09L5.25 12l2.846-.813a4.5 4.5 0 013.09-3.09L12 5.25l2.846.813a4.5 4.5 0 013.09 3.09L18.75 12z" />
+                        </svg>
+                        <h2 class="text-3xl font-bold">1. 조사 동기 및 목적</h2>
                     </div>
-
-                    <div class="mb-10">
-                        <h4 class="font-semibold text-center mb-1">Q2. AI의 장단점을 알고 있는가?</h4>
-                        <div class="chart-container w-full max-w-md mx-auto h-80 md:h-96">
-                            <canvas id="q2Chart"></canvas>
-                        </div>
-                        <p class="text-sm text-gray-600 mt-2 px-4 text-center">해석: 전체 응답자의 과반수인 11명(57.9%)이 AI의 장단점을 3~4개 설명 가능하다고 답해, 대부분 AI 활용에 대한 기초 지식을 보유한 것으로 판단된다.</p>
+                    <div class="space-y-4 text-gray-800 text-lg">
+                        <p><strong>조사 동기:</strong> 1학년 4반 친구들이 생성형 AI를 사용하며 나타나는 영향과 장단점, 이익과 손해를 알아보기 위함.</p>
+                        <p><strong>조사 목적:</strong> 학생들이 생성형 AI를 올바르게, 어떤 상황에 사용하는지 파악하기 위함.</p>
+                        <p><strong>최종 목표:</strong> 생성형 AI의 문제점을 인지하고, AI를 더 유용하게 사용하는 방법을 제시하는 것.</p>
                     </div>
-                    
-                    <div class="mb-10">
-                        <h4 class="font-semibold text-center mb-1">Q3. AI의 답변이 도움이 되었는가?</h4>
-                        <div class="chart-container w-full max-w-sm mx-auto h-72 md:h-80">
-                            <canvas id="q3Chart"></canvas>
-                        </div>
-                        <p class="text-sm text-gray-600 mt-2 px-4 text-center">해석: 약 84%에 해당하는 16명의 학생들(맞다 11명 + 매우 맞다 5명)이 AI의 답변에 만족감을 보이며, 학습 도구로서 긍정적으로 평가했다.</p>
-                    </div>
-                </div>
+                </section>
 
-                <div id="interview-analysis" class="mt-8 pt-6 border-t border-gray-200">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">나. 인터뷰 분석 요약</h3>
-                    
-                    <div class="space-y-12">
-                        <div class="p-4 bg-pink-50 rounded-lg border border-pink-200">
-                            <h5 class="font-semibold text-fuchsia-700 mb-2">첫 번째 인터뷰 (공은성 학생)</h5>
-                            <ul class="list-disc text-sm text-gray-700 space-y-1 pl-5 mb-4">
-                                <li><strong>AI 사용 계기:</strong> 친구 추천.</li>
-                                <li><strong>주요 활용 분야:</strong> 국어 글쓰기(완성도 향상), 코딩(효율적 코드 작성).</li>
-                                <li><strong>AI 신뢰도:</strong> "엄마보다 더 믿는다"고 표현, 교차 검증 의사 없음.</li>
-                                <li><strong>문제점 인식:</strong> "AI 대가리에 구멍이 나있다"며 AI의 엉뚱하거나 모순된 답변을 직접적으로 인식함.</li>
+                <section id="plan" class="card scroll-reveal">
+                    <div class="flex items-center mb-4">
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-12 h-12 mr-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                        </svg>
+                        <h2 class="text-3xl font-bold">2. 조사 계획</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-800">조사 기간 및 대상</h4>
+                             <p class="text-gray-700 text-lg"><strong>기간:</strong> 2025년 5월 15일 ~ 5월 20일 / <strong>대상:</strong> 미림마이스터고 1학년 4반 학생</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-800">조사 방법</h4>
+                            <ul class="list-disc text-gray-700 ml-5 mt-2 text-lg">
+                                <li><strong>설문 조사:</strong> 구글 폼을 활용해 AI 장단점, 필요성, 사용 느낌 등 정량 데이터 수집.</li>
+                                <li><strong>인터뷰:</strong> 네이버 클로바 노트를 활용해 AI 사용 경험, 생각 등 정성 데이터 수집.</li>
                             </ul>
-                            <div class="grid grid-cols-2 gap-4">
-                                <img src="src/KakaoTalk_20250523_135040974_01.jpg" alt="첫 번째 인터뷰 사진" class="w-full h-64 rounded-lg shadow-md object-cover">
-                                <img src="src/KakaoTalk_20250618_153257535_01.png" alt="첫 번째 인터뷰 워드 클라우드" class="w-full h-64 rounded-lg shadow-md object-cover">
+                        </div>
+                    </div>
+                </section>
+
+                <section id="results" class="card scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-12 h-12 mr-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                        </svg>
+                        <h2 class="text-3xl font-bold">3. 조사 결과</h2>
+                    </div>
+                    
+                    <div id="survey-analysis">
+                        <h3 class="text-2xl font-bold mt-8 mb-2 text-gray-800">가. 설문조사 분석</h3>
+                        <p class="text-base text-gray-600 mb-8">총 19명의 학생이 설문조사에 참여했습니다.</p>
+                        <div class="space-y-12">
+                            <div class="text-center">
+                                <h4 class="font-bold text-xl mb-2">Q1. 문제 해결 시 AI를 무조건 사용하는가?</h4>
+                                <div class="chart-container w-full max-w-md mx-auto h-80 md:h-96">
+                                    <canvas id="q1Chart"></canvas>
+                                </div>
+                                <p class="text-base text-gray-700 mt-4 px-4">해석: '보통이다' 응답이 6명(31.6%)으로 가장 많아, 상황에 따라 선택적으로 사용하는 경향을 보임.</p>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="font-bold text-xl mb-2">Q2. AI의 장단점을 알고 있는가?</h4>
+                                <div class="chart-container w-full max-w-lg mx-auto h-80 md:h-96">
+                                    <canvas id="q2Chart"></canvas>
+                                </div>
+                                <p class="text-base text-gray-700 mt-4 px-4">해석: 과반수인 11명(57.9%)이 '3~4개 설명 가능'하다고 답해, AI에 대한 기초 지식을 보유함.</p>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="font-bold text-xl mb-2">Q3. AI의 답변이 도움이 되었는가?</h4>
+                                <div class="chart-container w-full max-w-md mx-auto h-80 md:h-96">
+                                    <canvas id="q3Chart"></canvas>
+                                </div>
+                                <p class="text-base text-gray-700 mt-4 px-4">해석: 약 84%인 16명이 AI 답변에 만족하며 학습 도구로서 긍정적으로 평가함.</p>
                             </div>
                         </div>
-                        
-                        <div class="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                            <h5 class="font-semibold text-purple-700 mb-2">두 번째 인터뷰 (김진수 학생)</h5>
-                            <ul class="list-disc text-sm text-gray-700 space-y-1 pl-5 mb-4">
-                                <li><strong>AI 사용 계기:</strong> 친구 추천.</li>
-                                <li><strong>주요 활용 분야:</strong> 성공적인 직업생활, 국어 (과제 시 아이디어 구상 및 제작 도움).</li>
-                                <li><strong>AI 신뢰도:</strong> 90% 정도 신뢰, 교차 검증은 하지 않음.</li>
-                                <li><strong>AI 장점:</strong> "자신을 대신해서 생각해준다는 점"을 긍정적으로 평가.</li>
-                                <li><strong>문제점 인식:</strong> AI가 엉뚱하거나 모순된 답변을 한 경험이 없다고 응답.</li>
-                            </ul>
-                            <div class="grid grid-cols-2 gap-4">
-                                <img src="src/KakaoTalk_20250616_091633999.jpg" alt="두 번째 인터뷰 사진" class="w-full h-64 rounded-lg shadow-md object-cover">
-                                <img src="src/KakaoTalk_20250618_153257535.png" alt="두 번째 인터뷰 워드 클라우드" class="w-full h-64 rounded-lg shadow-md object-cover">
+                    </div>
+
+                    <div id="interview-analysis" class="mt-12 pt-8 border-t border-gray-200">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">나. 인터뷰 분석 요약</h3>
+                        <div class="space-y-8">
+                            <div class="p-6 bg-pink-50 rounded-lg border border-pink-200">
+                                <h4 class="font-bold text-xl text-fuchsia-700 mb-3">첫 번째 인터뷰 (공은성 학생)</h4>
+                                <div class="grid md:grid-cols-2 gap-6 items-center">
+                                    <ul class="list-disc text-base text-gray-700 space-y-2 pl-5">
+                                        <li><strong>활용 분야:</strong> 국어 글쓰기, 코딩</li>
+                                        <li><strong>신뢰도:</strong> "엄마보다 더 믿는다"며 매우 높음</li>
+                                        <li><strong>문제점 인식:</strong> "대가리에 구멍"이라는 표현으로 AI의 오류를 명확히 인지함</li>
+                                    </ul>
+                                    <img src="src/KakaoTalk_20250618_153257535_01.png" alt="첫 번째 인터뷰 워드 클라우드" class="w-full h-auto rounded-lg shadow-md object-contain">
+                                </div>
+                            </div>
+                            <div class="p-6 bg-purple-50 rounded-lg border border-purple-200">
+                                <h4 class="font-bold text-xl text-purple-700 mb-3">두 번째 인터뷰 (김진수 학생)</h4>
+                                <div class="grid md:grid-cols-2 gap-6 items-center">
+                                    <ul class="list-disc text-base text-gray-700 space-y-2 pl-5">
+                                        <li><strong>활용 분야:</strong> 직업생활, 국어 과제</li>
+                                        <li><strong>신뢰도:</strong> 90% 정도로 높지만, 교차 검증은 하지 않음</li>
+                                        <li><strong>장점:</strong> "대신 생각해주는 점"을 긍정적으로 평가</li>
+                                    </ul>
+                                    <img src="src/KakaoTalk_20250618_153257535.png" alt="두 번째 인터뷰 워드 클라우드" class="w-full h-auto rounded-lg shadow-md object-contain">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- 4. 결론 및 제언 -->
-            <section id="conclusion-recommendations" class="card scroll-reveal">
-                <div class="flex items-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-10 h-10 mr-3">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                    </svg>
-                    <h2 class="text-2xl font-bold">4. 결론 및 제언</h2>
-                </div>
-                <div class="space-y-4 text-gray-700">
-                    <p>미림마이스터고 소프트웨어과 1학년 4반 학생들은 생성형 AI를 ‘주변의 영향’과 ‘호기심’으로 사용하기 시작했으며, 주로 과제나 문제 해결에 활용하고 있었다. AI 답변을 약 90% 신뢰하며, 장단점을 인지하고 긍정적으로 사용하는 것으로 나타났다.</p>
-                    <p>하지만 AI 답변을 그대로 수용하는 경향과 비판적 사고 및 교차 검증 습관 부족이 관찰되었다. 이는 잘못된 정보 의존 위험을 높이므로, AI 답변 분석 및 근거 확인 역량 강화가 중요하다.</p>
-                    
-                    <div class="mt-6">
-                        <h4 class="font-semibold text-lg text-gray-800 mb-2">학생들을 위한 제언:</h4>
-                        <div class="highlight-box">
-                            <p><strong>"AI의 답변을 무조건 믿기보다, 친구들과 함께 그 내용을 토론하고 검증해보는 습관"</strong>을 가져야 한다. 스스로 사고하고, 타인의 의견을 들으며 함께 고민하는 태도가 필요하다.</p>
+                <section id="conclusion" class="card scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-12 h-12 mr-4">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
+                        <h2 class="text-3xl font-bold">4. 결론 및 제언</h2>
+                    </div>
+                    <div class="space-y-6 text-gray-800 text-lg">
+                        <p>학생들은 '호기심'과 '주변의 영향'으로 AI를 접하며, 과제 해결에 긍정적으로 활용하고 있었다. 그러나 AI 답변을 비판 없이 수용하는 경향과 교차 검증 습관의 부재는 개선이 필요한 지점이다.</p>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-800 mb-3">학생들을 위한 제언:</h4>
+                            <div class="highlight-box">
+                                <p><strong>1. 비판적 검증 습관 형성:</strong> AI의 답변을 친구들과 토론하고 검증하며, 스스로 사고하는 습관을 길러야 한다.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <p><strong>2. 경험 공유 및 학습 공동체 구축:</strong> AI 사용 경험과 팁을 공유하는 시간을 통해 함께 성장하는 학습 공동체를 형성해야 한다.</p>
+                            </div>
                         </div>
-                        <div class="highlight-box">
-                            <p><strong>"AI 사용 경험을 정리하고 공유하는 시간"</strong>을 반 전체나 소그룹 단위로 자주 가지면, 서로의 실수나 팁을 나누며 더 효과적으로 AI를 활용할 수 있다. 이는 학습 공동체 형성에 기여할 것이다.</p>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-800 mb-3">학교를 위한 제언:</h4>
+                            <p>학교는 AI 활용 가이드라인을 마련하고, 출처 명시를 의무화하며, AI 윤리, 정보 리터러시 등 관련 교육을 강화해야 한다.</p>
                         </div>
                     </div>
-                    <div class="mt-6">
-                        <h4 class="font-semibold text-lg text-gray-800 mb-2">학교를 위한 제언:</h4>
-                        <p>학교 차원에서 생성형 AI 올바른 활용 기준과 가이드라인 마련이 필요하다. 과제 시 출처 명시, 해석/검토 내용 제출 유도, AI 윤리, 정보 리터러시, 저작권 관련 교육을 통해 학생들의 기술 활용 능력을 길러야 한다.</p>
+                </section>
+
+                <section id="references" class="card scroll-reveal">
+                    <div class="flex items-center mb-4">
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-10 h-10 mr-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                        <h2 class="text-3xl font-bold">5. 참고자료</h2>
                     </div>
-                </div>
-            </section>
+                    <ul class="list-disc text-base text-gray-700 space-y-2 pl-5">
+                        <li>Google Gemini 2.5 Pro</li>
+                        <li>챗GPT</li>
+                        <li>클로바 노트 (인터뷰에 사용)</li>
+                        <li>구글 설문지 (설문조사에 사용)</li>
+                        <li>공통 국어2 (김수학 저자, 199쪽 ~ 202쪽)</li>
+                    </ul>
+                </section>
+            </main>
 
-            <!-- 5. 참고자료 -->
-            <section id="references" class="card scroll-reveal">
-                <div class="flex items-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="section-icon w-8 h-8 mr-3">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                    </svg>
-                    <h2 class="text-2xl font-bold">5. 참고자료</h2>
-                </div>
-                <ul class="list-disc text-sm text-gray-700 space-y-1 pl-5">
-                    <li>챗GPT</li>
-                    <li>클로바 노트 (인터뷰에 사용)</li>
-                    <li>구글 설문지 (설문조사에 사용)</li>
-                    <li>공통 국어2 (김수학 저자, 199쪽 ~ 202쪽)</li>
-                </ul>
-            </section>
-        </main>
-
-        <!-- 6. 푸터 -->
-        <footer class="text-center mt-12 py-8 border-t border-pink-200 scroll-reveal">
-            <p class="text-sm text-gray-600">&copy; 2025 미림마이스터고등학교 1학년 4반 1조. All rights reserved.</p>
-            <p class="text-xs text-gray-500 mt-1">본 인포그래픽은 제공된 학생 보고서를 기반으로 시각화되었습니다.</p>
-        </footer>
-
+            <!-- Table of Contents -->
+            <aside class="hidden lg:block">
+                <nav class="toc">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">목차</h3>
+                    <ul>
+                        <li><a href="#intro">보고서 개요</a></li>
+                        <li><a href="#motivation">1. 조사 동기 및 목적</a></li>
+                        <li><a href="#plan">2. 조사 계획</a></li>
+                        <li><a href="#results">3. 조사 결과</a></li>
+                        <li><a href="#conclusion">4. 결론 및 제언</a></li>
+                        <li><a href="#references">5. 참고자료</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
     </div>
 
     <script>
@@ -309,10 +342,14 @@
                 primary: '#DB2777', // Fuchsia-600
                 secondary: '#F472B6', // Pink-400
                 accent: '#A855F7', // Purple-500
-                supportLight: '#FDF2F8', // Pink-50
                 darkText: '#4A5568', // Gray-700
                 custom1: '#F9A8D4', // Pink-300
-                custom2: '#C084FC', // Purple-400
+                custom2: '#C084FC', // Purple-400,
+                bar1: '#EC4899', // pink-500
+                bar2: '#D946EF', // fuchsia-500
+                bar3: '#A855F7', // purple-500
+                bar4: '#8B5CF6', // violet-500
+                bar5: '#6366F1', // indigo-500
             };
 
             const commonChartOptions = {
@@ -322,26 +359,26 @@
                     legend: {
                         position: 'bottom',
                         labels: {
-                            font: { family: "'Pretendard', sans-serif" },
+                            font: { family: "'Pretendard', sans-serif", size: 14 },
                             padding: 20,
                             color: chartColors.darkText
                         }
                     },
                     tooltip: {
-                        bodyFont: { family: "'Pretendard', sans-serif" },
-                        titleFont: { family: "'Pretendard', sans-serif" },
-                        backgroundColor: 'rgba(55, 65, 81, 0.85)', // Gray-700 with opacity
+                        bodyFont: { family: "'Pretendard', sans-serif", size: 14 },
+                        titleFont: { family: "'Pretendard', sans-serif", size: 16, weight: 'bold' },
+                        backgroundColor: 'rgba(55, 65, 81, 0.85)',
                         titleColor: '#FFFFFF',
                         bodyColor: '#FFFFFF',
-                        padding: 10,
-                        cornerRadius: 4,
+                        padding: 12,
+                        cornerRadius: 6,
                         callbacks: {
                             label: function(context) {
                                 let label = context.label || '';
                                 if (label) {
                                     label += ': ';
                                 }
-                                let rawValue = context.chart.config.type === 'bar' ? context.parsed.x : context.parsed;
+                                let rawValue = context.chart.config.type === 'bar' ? (context.chart.config.options.indexAxis === 'y' ? context.parsed.x : context.parsed.y) : context.parsed;
                                 const percentage = context.dataset.percentages[context.dataIndex];
                                 if (rawValue !== null && rawValue !== undefined) {
                                     label += `${rawValue}명 (${percentage}%)`;
@@ -353,36 +390,35 @@
                 }
             };
             
-            // Q1 Chart
             const q1Ctx = document.getElementById('q1Chart').getContext('2d');
             new Chart(q1Ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['매우 아니다 (1점)', '아니다 (2점)', '보통이다 (3점)', '맞다 (4점)', '매우 맞다 (5점)'],
+                    labels: ['매우 아니다', '아니다', '보통이다', '맞다', '매우 맞다'],
                     datasets: [{
                         label: '응답 인원',
                         data: [3, 3, 6, 5, 2],
                         percentages: [15.8, 15.8, 31.6, 26.3, 10.5],
-                        backgroundColor: [chartColors.secondary, chartColors.custom1, chartColors.primary, chartColors.custom2, chartColors.accent],
+                        backgroundColor: [chartColors.bar1, chartColors.bar2, chartColors.bar3, chartColors.bar4, chartColors.bar5],
                         borderColor: '#FFFFFF',
-                        borderWidth: 2
+                        borderWidth: 3
                     }]
                 },
                 options: { ...commonChartOptions }
             });
 
-            // Q2 Chart
             const q2Ctx = document.getElementById('q2Chart').getContext('2d');
             new Chart(q2Ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['설명 불가능', '1~2개 설명 가능', '3~4개 설명 가능', '각각 4개 설명 가능', '각각 5개 이상 설명 가능'],
+                    labels: ['설명 불가능', '1~2개', '3~4개', '각각 4개', '5개 이상'],
                     datasets: [{
                         label: '응답 인원 (명)',
                         data: [0, 3, 11, 3, 2],
                         percentages: [0, 15.8, 57.9, 15.8, 10.5],
-                        backgroundColor: [chartColors.accent, chartColors.custom2, chartColors.primary, chartColors.custom1, chartColors.secondary],
-                        borderWidth: 1
+                        backgroundColor: [chartColors.bar1, chartColors.bar2, chartColors.bar3, chartColors.bar4, chartColors.bar5],
+                        borderWidth: 1,
+                        borderRadius: 4
                     }]
                 },
                 options: { 
@@ -391,10 +427,12 @@
                     scales: {
                         x: {
                             beginAtZero: true,
-                            title: { display: true, text: '응답 인원 (명)', font: { family: "'Pretendard', sans-serif" }, color: chartColors.darkText },
+                            grid: { display: false },
+                            title: { display: true, text: '응답 인원 (명)', font: { family: "'Pretendard', sans-serif", size: 14 }, color: chartColors.darkText },
                             ticks: { font: { family: "'Pretendard', sans-serif" }, color: chartColors.darkText, stepSize: 2 }
                         },
                         y: {
+                            grid: { display: false },
                             ticks: { font: { family: "'Pretendard', sans-serif" }, color: chartColors.darkText }
                         }
                     },
@@ -402,19 +440,18 @@
                 }
             });
 
-            // Q3 Chart
             const q3Ctx = document.getElementById('q3Chart').getContext('2d');
             new Chart(q3Ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['전혀 아니다 (1점)', '아니다 (2점)', '보통이다 (3점)', '맞다 (4점)', '매우 맞다 (5점)'],
+                    labels: ['전혀 아니다', '아니다', '보통이다', '맞다', '매우 맞다'],
                     datasets: [{
                         label: '응답 인원',
                         data: [0, 1, 2, 11, 5],
                         percentages: [0, 5.3, 10.5, 57.9, 26.3],
-                        backgroundColor: [chartColors.accent, chartColors.custom2, chartColors.custom1, chartColors.secondary, chartColors.primary],
+                        backgroundColor: [chartColors.bar1, chartColors.bar2, chartColors.bar3, chartColors.bar4, chartColors.bar5].reverse(),
                         borderColor: '#FFFFFF',
-                        borderWidth: 2
+                        borderWidth: 3
                     }]
                 },
                 options: { ...commonChartOptions }
@@ -426,18 +463,29 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Animate only once
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.1 // Trigger when 10% of the element is visible
-            });
+            }, { threshold: 0.1 });
 
-            scrollElements.forEach(el => {
-                observer.observe(el);
-            });
+            scrollElements.forEach(el => observer.observe(el));
+
+            // Table of Contents Active Link Logic
+            const tocLinks = document.querySelectorAll('.toc a');
+            const sections = document.querySelectorAll('main section');
+            const tocObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        tocLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                        });
+                    }
+                });
+            }, { rootMargin: '-30% 0px -70% 0px' });
+
+            sections.forEach(section => tocObserver.observe(section));
         });
     </script>
-    <!-- HTML DOCUMENT END: This infographic was generated based on the student report provided. -->
 </body>
 </html>
